@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Events</title>
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+	<style>
+		#container {
+			padding: 50px;
+			background-color: #FFF;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container"></div>
+
+	<script type="text/babel">
+
+		var goal = document.querySelector("#container");
+
+		class CounterChild extends React.Component {
+			render() {
+				var textStyle = {
+					fontSize: 72,
+					fontFamily: "sans-serif",
+					color: "#333",
+					fontWeight: "bold"
+				};
+
+				return (
+					<div style={textStyle}>
+						{this.props.display}
+					</div>
+				);
+			}
+		}
+
+		class Counter extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = {
+					count: 0
+				}
+				// Bind this to the component instance using bind method (Bind this 2/2)
+				this.increase = this.increase.bind(this)
+			}
+			// Bind this: Arrow functions (Bind this 1/2)
+			increase() {
+				var currentCount = this.state.count;
+				if (this.shiftKey) {
+					console.log('increase by 10')
+					currentCount += 10;
+				} else {
+					console.log('increase by 1')
+					currentCount += 1;
+				}
+				this.setState({
+					count: currentCount
+				});
+			}
+
+			// Passing Arguments: Anonymous arrow function (Pass Arguments (1/2))
+			//reset = (a) => {
+			reset = () => {
+				console.log('Reset!')
+				this.setState({
+					// Passing Arguments: Anonymous arrow function (Pass Arguments (1/2))
+					//count: a
+					count: 0
+				});
+			}
+
+			render() {
+				var backgroundStyle = {
+					padding: 50,
+					backgroundColor: "#FFC53A",
+					width: 100,
+					height: 130,
+					borderRadius: 10,
+					textAlign: "center"
+				};
+				var btnSt1 = {
+					fontSize: "1em",
+					width: 30,
+					height: 30,
+					fontFamily: "sans-serif",
+					color: "#333",
+					fontWeight: "bold",
+					lineHeight: "3px"
+				};
+				var btnSt2 = {
+					fontSize: "1em",
+					width: 70,
+					height: 30,
+					fontFamily: "sans-serif",
+					color: "#333",
+					fontWeight: "bold",
+					lineHeight: "3px"
+				};
+				return (
+					<div style={backgroundStyle}>
+						<CounterChild display={this.state.count} />
+						{/* Passing Arguments: Arrow function*/}
+						<button onClick={this.increase} style={btnSt1}>+</button>
+						{/*  */}
+						<button onClick={this.reset} style={btnSt2}>Reset</button>
+
+						{/* Passing Arguments: Anonymous arrow function (Pass Arguments (1/2) */}
+						{/*  */}
+						{/*<button onClick={() => this.reset(0)} style={btnSt2}>Reset</button>*/}
+
+						{/* Passing Arguments: Bind event Hanlder to this (Pass Arguments (2/2) */}
+						{/* <button onClick={this.reset.bind(this, 0)} style={btnSt2}>Reset</button> */}
+					</div>
+				);
+			}
+		};
+
+		ReactDOM.render(
+			<div>
+				<Counter />
+			</div>,
+			goal
+		);
+
+	</script>
+</body>
+
+</html>
