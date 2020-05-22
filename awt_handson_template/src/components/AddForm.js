@@ -5,17 +5,18 @@ export default class AddForm extends Component {
 	state = {
 		task: ''
 	}
-	/* Task 3.4: Create a handleChange method with event parameter "e" and set state property "task", to the event parameters target value*/
+	/* Task 3.4: START */
 	handleChange = () => {
 
 	}
-	/* Task 3.4: End */
+	/* Task 3.4: END */
 
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		// Task Use the prop method to pass the argument
-		this.props.addTodo(this.state);
+		/* Task 3.5 START */
+		
+		/* Task 3.5 END */
 		this.setState({
 			task: ''
 		})
@@ -27,11 +28,11 @@ export default class AddForm extends Component {
 				<form onSubmit={this.handleSubmit}>
 					<label>Add new todo:</label>
 
-					{/* Task 3.3: Create an onChange event handler and pass the method handleChange */}
+					{/* Task 3.3: START */}
 
 					<input type="text" value={this.state.task} />
 
-					{/* Task 3.3: End */}
+					{/* Task 3.3: END */}
 				</form>
 			</div>
 		)
