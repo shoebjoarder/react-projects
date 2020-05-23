@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/awt_handson_template/node_modules
 /.pnp
 .pnp.js
 

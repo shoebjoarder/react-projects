@@ -14,9 +14,9 @@ export default class AddForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		/* Task 3.5 START */
+		/* Task 3.5: START */
 		
-		/* Task 3.5 END */
+		/* Task 3.5: END */
 		this.setState({
 			task: ''
 		})
